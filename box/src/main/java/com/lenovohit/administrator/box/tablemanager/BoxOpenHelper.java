@@ -39,7 +39,11 @@ public class BoxOpenHelper extends SQLiteOpenHelper{
                 Field[] fields = aClass.getDeclaredFields();
                 String sql = "";
                 for (Field field : fields) {
-                    sql = sql + "," + field.getName() + " varchar(20) ";
+                    if (field.getType() == java.util.List.class  || field.getType().isAssignableFrom( com.lenovohit.administrator.box.crud.DataSupport.class)){
+                        sql = sql + "," + field.getName()+"Id" + " varchar(20) ";
+                    }else {
+                        sql = sql + "," + field.getName() + " varchar(20) ";
+                    }
                 }
                 db.execSQL("create table " + aClass.getSimpleName() + "( id integer  primary key autoincrement " + sql + " )");
             } catch (ClassNotFoundException e) {

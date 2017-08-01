@@ -5,6 +5,7 @@
 
     <list>
         <mapping class="com.lenovohit.administrator.box_master.model.News" />
+        <mapping class="com.lenovohit.administrator.box_master.model.Comment" />
     </list>
 
     <storage value="external" />
